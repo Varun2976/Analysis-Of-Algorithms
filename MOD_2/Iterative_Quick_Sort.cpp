@@ -19,6 +19,7 @@ int partition(vector<int>& arr,int l,int r){
     swap(arr[l],arr[j]);
     return j;
 }
+int Quick_Sort()
 int main(){
 
 
