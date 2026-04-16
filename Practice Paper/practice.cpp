@@ -1,13 +1,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void Selection_Sort(vector<int>&arr, int n){
-    for(int i = 0 ; i < n-1;i++){
-        for(int j = i+1;j<n;j++){
-            if(arr[i] > arr[j]){
-                swap(arr[i],arr[j]);
-            }
+void Insertion_Sort(vector<int>&arr, int n){
+    for(int i = 1 ; i < n;i++){
+        int key = arr[i];
+        int j = i - 1;
+
+        while(j >= 0 && arr[j] > key){
+            arr[j+1] = arr[j];
+            j--;
         }
+        arr[j+1] = key;
     }
 }
 int main(){
@@ -20,7 +23,7 @@ int main(){
         cin >> arr[i];
     }
 
-    Selection_Sort(arr,n);
+    Insertion_Sort(arr,n);
 
     for(int c : arr){
         cout << c << " ";
