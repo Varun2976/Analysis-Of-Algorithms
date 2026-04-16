@@ -3,23 +3,23 @@ using namespace std;
 
 struct Item{
     int value , weight;
-}
+};
 bool cmp(Item a , Item b){
-    double r1 = double(a.value)/weight;
-    double r2 = double(b.value)/weight;
+    double r1 = double(a.value)/a.weight;
+    double r2 = double(b.value)/b.weight;
     return r1 > r2;
 }
 
-double fractionalKnapsack(int W , vector<int>& arr){
-    sort(arr.begin(),arr.end(),cmp);
-    double total = 0.0
+double fractionalKnapsack(int W , vector<Item>& items){
+    sort(items.begin(),items.end(),cmp);
+    double total = 0.0;
     for(auto item : items){
         if(W >= item.weight){
             W -= item.weight;
-            total += item.value();
+            total += item.value;
         }
         else{
-            total += item.value(double(W)/item.weight);
+            total += item.value*(double(W)/item.weight);
             break;
         }
     }
