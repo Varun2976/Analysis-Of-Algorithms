@@ -25,6 +25,17 @@ int partition(vector<int>&arr,int low,int high,unordered_map<int,int>&freq){
 
 }
 
+void Quick_sort(vector<int>& arr, unordered_map<int,int>& freq){
+    int n = arr.size();
+    stack<pair<int,int>>st;
+
+    while(!st.empty()){
+        
+    }
+}
+
+
+
 
 int main(){
     int n;
