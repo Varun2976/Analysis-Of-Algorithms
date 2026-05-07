@@ -1,39 +1,41 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void Insertion_Sort(vector<int>&arr, int n){
-    int n = arr.size();
+void Partition(vector<int>&arr , int low , int high , unordered_map<int,int>freq){
+    int pivot = arr[low]
+}
+void Iterative_Quick_Sort(){
+    sort(items.begin(),items.end(),cmp);
+    double total = 0.0;
 
-    vector<vector<int>>dp(n,vector<int>(n,0));
-
-    for(int len = 2 ; len < n ;len++){
-        for(int i = 1 ; i < n - len + 1;i++){
-            int j = i + len - 1;
-            dp[i][j] = INT_MAX;
-
-            for(int k = i ; k < j; k++){
-                int cost = dp[i][k] + dp[k+1][j]+
-                            arr[i-1]*arr[k]*arr[j];
-
-                dp[i][j] = min(dp[i][j],cost);
-            }
+    for(auto item : items){
+        if(W >= item.weight){
+            W -= item.weight;
+            total += item.value;
+        }
+        else{
+            total += item.value * (double(W)/item.weight);
+            break;
         }
     }
-    return dp[1][n-1];
+    cout << total << endl;
+
 }
 int main(){
     int n;
     cin >> n;
 
-    vector<int>arr(n);
+    vector<int> arr(n);
+    unordered_map<int,int> freq;
 
-    for(int i = 0 ; i < n ;i++){
+    for (int i = 0; i < n; i++) {
         cin >> arr[i];
+        freq[arr[i]]++;
     }
 
-    Insertion_Sort(arr,n);
+    Iterative_Quick_Sort(arr, freq);
 
-    for(int c : arr){
+    for (int c : arr) {
         cout << c << " ";
     }
     cout << endl;
