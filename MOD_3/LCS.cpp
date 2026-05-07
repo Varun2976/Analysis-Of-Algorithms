@@ -5,18 +5,25 @@ void LCS(string a , string b){
     int m = b.size();
 
     vector<vector<int>>L(n+1,vector<int>(m+1,0));
+    vector<char>ch;
 
     for(int i = 1 ; i <= n;i++){
         for(int j = 1 ; j <= m ;j++){
             if(a[i-1] == b[j-1]){
                 L[i][j] = L[i-1][j-1] + 1;
+                ch.push_back(a[i-1]);
             }
             else{
                 L[i][j] = max(L[i-1][j],L[i][j-1]);
             }
         }
     }
-    cout << "LCS : " << L[n][m] << endl;
+    cout << "LCS length : " << L[n][m] << endl;
+    cout << "String : " ;
+    for(char c : ch){
+        cout << c;
+    }
+    cout << endl;
 }
 
 int main(){
