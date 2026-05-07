@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void Insertion_Sort(vector<int> &arr,int n){
+void Insertion(vector<int> &arr,int n){
     for(int i = 1 ; i < n;i++){
         int key = arr[i];
         int j = i -1;
