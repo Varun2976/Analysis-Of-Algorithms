@@ -1,16 +1,26 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void Insertion(vector<int> &arr,int n){
-    for(int i = 1 ; i < n;i++){
-        int key = arr[i];
-        int j = i -1;
+void Selection(vector<int> &arr,int n){
+    int maxim = *max_element(arr.begin(),arr.end());
 
-        while(j >= 0 && arr[j] > key){
-            arr[j+1] = arr[j];
-            j--;
-        }
-        arr[j+1] = key;
+    vector<int>count(maxim+1,0);
+    vector<int>output(n);
+
+    for(int i = 0 ; i < n ; i++){
+        count[arr[i]]++;
+    }
+    for(int i=1;i < n;i++){
+        count[i] += count[i-1];
+    }
+    for(int i = maxim ; i > 0 ;i--){
+        count[i] = count[i-1];
+    }
+    count[0] = 0;
+
+    for(int i = 0 ; i < n;i++){
+        output[count[arr[i]]] = arr[i];
+        count[arr[i]]++;
     }
 }
 int main(){
