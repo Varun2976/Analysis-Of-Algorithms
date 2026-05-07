@@ -1,41 +1,31 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void Partition(vector<int>&arr , int low , int high , unordered_map<int,int>freq){
-    int pivot = arr[low]
-}
-void Iterative_Quick_Sort(){
-    sort(items.begin(),items.end(),cmp);
-    double total = 0.0;
+void Insertion_Sort(vector<int> &arr,int n){
+    for(int i = 1 ; i < n;i++){
+        int key = arr[i];
+        int j = i -1;
 
-    for(auto item : items){
-        if(W >= item.weight){
-            W -= item.weight;
-            total += item.value;
+        while(j >= 0 && arr[j] > key){
+            arr[j+1] = arr[j];
+            j--;
         }
-        else{
-            total += item.value * (double(W)/item.weight);
-            break;
-        }
+        arr[j+1] = key;
     }
-    cout << total << endl;
-
 }
 int main(){
     int n;
     cin >> n;
 
-    vector<int> arr(n);
-    unordered_map<int,int> freq;
+    vector<int>arr(n);
 
-    for (int i = 0; i < n; i++) {
+    for(int i = 0 ; i < n ;i++){
         cin >> arr[i];
-        freq[arr[i]]++;
     }
 
-    Iterative_Quick_Sort(arr, freq);
+    Insertion_Sort(arr,n);
 
-    for (int c : arr) {
+    for(int c : arr){
         cout << c << " ";
     }
     cout << endl;
